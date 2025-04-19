@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
+import { addToDb } from '../../utilities/addToDb';
 
 const Details = () => {
     const allJobs = useLoaderData();
@@ -9,7 +10,11 @@ const Details = () => {
 
     const selectedJob = allJobs.find(job => job.id === currentPageInt);
 
-    const { educational_requirements, job_responsibility, job_description, experiences, salary, job_title, contact_information } = selectedJob;
+    const { id, educational_requirements, job_responsibility, job_description, experiences, salary, job_title, contact_information } = selectedJob;
+
+    const handleApplyNow = (id) => {
+        addToDb(id);
+    }
 
     return (
         <div>
@@ -37,7 +42,7 @@ const Details = () => {
                             <p>Address: {contact_information.address}</p>
                         </div>
                     </div>
-                    <button className='btn w-full bg-purple-700 rounded-lg mt-2'>Apply Now</button>
+                    <button onClick={() => handleApplyNow(id)} className='btn w-full bg-purple-700 rounded-lg mt-2'>Apply Now</button>
                 </div>
             </div>
         </div>
