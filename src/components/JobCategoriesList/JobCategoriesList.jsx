@@ -16,7 +16,11 @@ const JobCategoriesList = ({ onCategorySelect }) => {
             <h2 className='text-center text-2xl font-semibold mb-5'>Job Category</h2>
             <div className='flex justify-center'>
                 {
-                    jobCategories.map((category) => <Category key={category.id} category={category} onCategorySelect={() => onCategorySelect(category.category_name)}></Category>)
+                    jobCategories.map((category) => <Category
+                        key={category.id}
+                        category={category}
+                        onCategorySelect={() => onCategorySelect(category.category_name)}
+                    ></Category>)
                 }
             </div>
         </div>
